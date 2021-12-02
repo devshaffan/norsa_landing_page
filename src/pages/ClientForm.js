@@ -181,18 +181,19 @@ function ClientForm() {
       .then(function (response) {
         console.log(response)
         handleFileSubmit()
-          .then(function (response) {
-            console.log(response)
-          }).catch(function (error) {
-            console.log(error)
+          .then(function (rsp) {
+            console.log(rsp)
+          }).catch(function (err) {
+            console.log(err)
           })
         alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon")
+        window.location.reload(true);
       })
       .catch(function (error) {
         //alert("Server Error Try Again later")
-        console.log(error)
+        console.log("this is the error" + error)
       })
-    window.location.reload(true);
+    
   };
   const handleFileChange = (event) => {
     if (event.target.files.length !== 0) {
