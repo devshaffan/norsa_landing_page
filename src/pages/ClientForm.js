@@ -186,7 +186,7 @@ function ClientForm() {
           }).catch(function (err) {
             console.log(err)
           })
-        alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon")
+        alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos mester di mas informashon")
         window.location.reload(true);
       })
       .catch(function (error) {
