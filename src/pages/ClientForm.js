@@ -164,6 +164,7 @@ function ClientForm() {
     data.append("file", file);
     data.append("id", uniqueID);
     data.append('Client_id', formData.id);
+    console.log(data , "pic data");
     return addClientImage(data)
   }
 
@@ -187,7 +188,7 @@ function ClientForm() {
             console.log(err)
           })
         alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos mester di mas informashon")
-        window.location.reload(true);
+        // window.location.reload(true);
       })
       .catch(function (error) {
         //alert("Server Error Try Again later")
