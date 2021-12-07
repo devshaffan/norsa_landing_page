@@ -183,7 +183,7 @@ function ClientForm() {
         handleFileSubmit()
           .then(function (rsp) {
             alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon")
-            window.location.reload(true);
+            window.location.reload(false);
             console.log(rsp)
           }).catch(function (err) {
             console.log(err)
