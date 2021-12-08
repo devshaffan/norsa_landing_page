@@ -663,7 +663,7 @@ function ClientForm(props) {
                     </Row>
                   ) : (
                     <div>
-                      <Box
+                      {/* <Box
                         sx={{
                           display: "flex",
                           alignItems: "center",
@@ -684,7 +684,7 @@ function ClientForm(props) {
                             Uplaoding image .....
                           </h4>
                         </div>
-                      </Box>
+                      </Box> */}
                     </div>
                   )}
                   {/* <Row  className="padding-class">

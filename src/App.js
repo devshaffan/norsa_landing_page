@@ -5,6 +5,7 @@ import { createTheme } from "@material-ui/core/styles";
 import Navigation from "./components/Navigation";
 import Contact from "./components/Contact";
 import Home from "./pages/Home";
+import ClientForm from "./pages/ClientForm";
 import "./App.css";
 
 const App = () => {
@@ -20,7 +21,7 @@ const App = () => {
         <Router>
           <Navigation />
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            <Route exact path="/" element={<ClientForm />} />
           </Routes>
           <Contact />
         </Router>

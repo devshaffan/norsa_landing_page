@@ -708,7 +708,7 @@ function ClientNoboForm(props) {
                         <Form.Control
                           as="select"
                           defaultValue=""
-                          required
+                          // required
                           // value={teltrabou}
                           // name="teltrabou"
                           onChange={(e) => {
@@ -854,7 +854,7 @@ function ClientNoboForm(props) {
                     </Row>
                   ) : (
                     <div>
-                      <Box
+                      {/* <Box
                         sx={{
                           display: "flex",
                           alignItems: "center",
@@ -875,7 +875,7 @@ function ClientNoboForm(props) {
                             Uplaoding image .....
                           </h4>
                         </div>
-                      </Box>
+                      </Box> */}
                     </div>
                   )}
                   {/* <Row  className="padding-class">
