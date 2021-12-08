@@ -36,7 +36,7 @@ function ClientForm(props) {
   const [dealers, setDealers] = React.useState([]);
   const [file, setFile] = React.useState();
   const [fuentediEntrada, setFuentediEntrada] = React.useState(null)
-
+  const [isLoading, setIsLoading] = React.useState(false)
   const [workNoOption, setWorkNoOption] = React.useState("+5999")
   const [contactNoOption, setContactNoOption] = React.useState("+5999")
 
@@ -86,7 +86,7 @@ function ClientForm(props) {
     Client_id: "",
   });
 
-  
+
   const { children, value, index, ...other } = props;
 
   useEffect(() => {
@@ -183,6 +183,7 @@ function ClientForm(props) {
       alert(valid);
       return;
     }
+    setIsLoading(true)
     let fData = { ...formData }
     fData.WorkNo = workNoOption.trim() + " " + fData.WorkNo.trim()
     fData.ContactNo = contactNoOption.trim() + " " + fData.ContactNo.trim()
@@ -209,7 +210,7 @@ function ClientForm(props) {
     }
   };
 
-    
+
   return (
     <>
       <Container
@@ -644,7 +645,7 @@ function ClientForm(props) {
                           onChange={(e) => {
                             handleFileChange(e);
                           }}
-                          //onChange={(e) => handleInputChange(e)}
+                        //onChange={(e) => handleInputChange(e)}
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">
                           Please provide a value.
@@ -706,8 +707,8 @@ function ClientForm(props) {
                   <Row className="text-center mt-2">
                     <Col sm="12">
                       <div className="button-wrapper">
-                        <Button className="add-btn res-size" type="submit">
-                          Save
+                        <Button className="add-btn res-size" type="submit" disabled={isLoading}>
+                          {isLoading ? <i class="fa fa-spinner" aria-hidden="true">Saving..</i> : <div>Save</div>}
                         </Button>
                         {/* <Link to="#">
                           <Button className="delete-btn res-size">Back</Button>
