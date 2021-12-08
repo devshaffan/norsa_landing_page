@@ -1,3 +1,19 @@
+.tab-main-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.tabs-flex {
+  display: flex;
+}
+
+.tab-styling {
+  font-size: 13px !important;
+  /* margin-right: 20px !important; */
+}
+
 .add-btn {
   background-color: #3aab7b;
   border: 1px solid #3aab7b;
@@ -7,7 +23,7 @@
   font-size: 16px !important;
 }
 
-.add-btn:hover{
+.add-btn:hover {
   background-color: #3aab7b !important;
   border: 1px solid #3aab7b !important;
 }
@@ -21,7 +37,7 @@
   font-size: 16px !important;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
   background-color: #c82333 !important;
   border: 1px solid #c82333 !important;
 }
@@ -42,7 +58,7 @@
 }
 
 .main-container {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 100px;
   padding: 50px 80px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -93,22 +109,22 @@
   margin-bottom: 12px;
 }
 
-.padding-class-new{
+.padding-class-new {
   margin-bottom: 20px;
 }
 
-input::placeholder{
+input::placeholder {
   color: #c82333;
 }
 
 .requiredelement:after {
-    content:"  *";
-    color: red;
-    font-size: 14px;
-    padding-left: 2px;
+  content: "  *";
+  color: red;
+  font-size: 14px;
+  padding-left: 2px;
 }
 
-.placeholder-Class::placeholder{
+.placeholder-Class::placeholder {
   color: #000 !important;
 }
 
@@ -127,6 +143,15 @@ input::placeholder{
 }
 
 @media screen and (max-width: 500px) {
+  .tab-flex {
+    flex-direction: column;
+  }
+
+  .tab-styling {
+  font-size: 11px !important;
+}
+
+
   .button-wrapper {
     margin-top: 30px;
     flex-direction: column;
@@ -154,9 +179,9 @@ input::placeholder{
   }
 
   .main-container {
-  box-shadow: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px 40px;
-}
+    box-shadow: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px 40px;
+  }
 }

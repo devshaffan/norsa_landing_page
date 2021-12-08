@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 // react-bootstrap components
 import {
   Badge,
@@ -16,7 +15,7 @@ import {
 } from "react-bootstrap";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import './clientForm.css'
+import "./clientForm.css";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import addClient from "../services/client";
@@ -26,8 +25,7 @@ import { getNextId } from "../services/client";
 import { addClientImage } from "../services/client";
 import "../components/Register.css";
 
-
-function ClientForm(props) {
+function ClientNoboForm(props) {
   const history = useNavigate();
   const queryParams = new URLSearchParams(window.location.search);
   const [ClientID, setClientID] = React.useState();
@@ -35,10 +33,10 @@ function ClientForm(props) {
   const [uniqueID] = React.useState(_uniqueId("prefix-"));
   const [dealers, setDealers] = React.useState([]);
   const [file, setFile] = React.useState();
-  const [fuentediEntrada, setFuentediEntrada] = React.useState(null)
+  const [fuentediEntrada, setFuentediEntrada] = React.useState(null);
 
-  const [workNoOption, setWorkNoOption] = React.useState("+5999")
-  const [contactNoOption, setContactNoOption] = React.useState("+5999")
+  const [workNoOption, setWorkNoOption] = React.useState("+5999");
+  const [contactNoOption, setContactNoOption] = React.useState("+5999");
 
   const [formData, setFormData] = React.useState({
     id: null,
@@ -59,6 +57,12 @@ function ClientForm(props) {
     SourceOfIncome: "",
     ExpiryDate: "",
     RecievedCreditInPast: false,
+    // Kasa: false,
+    // prtn:"",
+    // yu: false,
+    // bibienda: "",
+    // teltrabou: "",
+    // teltrabouNo:"",
   });
   const {
     id,
@@ -77,6 +81,12 @@ function ClientForm(props) {
     Dealer_id,
     SourceOfIncome,
     RecievedCreditInPast,
+    // kasa,
+    // prtn,
+    // yu,
+    // bibienda,
+    // teltrabou,
+    // teltrabouNo,
     Date,
     ExpiryDate,
   } = formData;
@@ -86,7 +96,6 @@ function ClientForm(props) {
     Client_id: "",
   });
 
-  
   const { children, value, index, ...other } = props;
 
   useEffect(() => {
@@ -128,7 +137,12 @@ function ClientForm(props) {
       }
       return "only alphabets and spaces";
     }
-    if (name === "WorkNo" || name === "FaxNumber" || name === "ContactNo" || name == "idCard") {
+    if (
+      name === "WorkNo" ||
+      name === "FaxNumber" ||
+      name === "ContactNo" ||
+      name == "idCard"
+    ) {
       let pattern = new RegExp("^[0-9 +]*$");
       if (pattern.test(value)) {
         return true;
@@ -149,7 +163,6 @@ function ClientForm(props) {
       return;
     }
 
-
     const valid = validateInput(e.target.name, e.target.value);
     if (valid != true) {
       alert(valid);
@@ -168,13 +181,13 @@ function ClientForm(props) {
     return "not a valid email";
   };
   const handleFileSubmit = () => {
-    console.log(uniqueID)
+    console.log(uniqueID);
     const data = new FormData();
     data.append("file", file);
     data.append("id", uniqueID);
-    data.append('Client_id', formData.id);
-    return addClientImage(data)
-  }
+    data.append("Client_id", formData.id);
+    return addClientImage(data);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -183,33 +196,37 @@ function ClientForm(props) {
       alert(valid);
       return;
     }
-    let fData = { ...formData }
-    fData.WorkNo = workNoOption.trim() + " " + fData.WorkNo.trim()
-    fData.ContactNo = contactNoOption.trim() + " " + fData.ContactNo.trim()
+    let fData = { ...formData };
+    fData.WorkNo = workNoOption.trim() + " " + fData.WorkNo.trim();
+    fData.ContactNo = contactNoOption.trim() + " " + fData.ContactNo.trim();
     addClient(fData)
       .then(function (response) {
-        console.log(response)
+        console.log(response);
         handleFileSubmit()
           .then(function (rsp) {
-            alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon")
+            alert(
+              "Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon"
+            );
             window.location.reload(false);
-            console.log(rsp)
-          }).catch(function (err) {
-            console.log(err)
+            console.log(rsp);
           })
+          .catch(function (err) {
+            console.log(err);
+          });
       })
       .catch(function (error) {
         //alert("Server Error Try Again later")
-        console.log("this is the error" + error)
-      })
+        console.log("this is the error" + error);
+      });
   };
   const handleFileChange = (event) => {
     if (event.target.files.length !== 0) {
+    // setTimeout(() => {
+    // }, 5000);
       setFile(event.target.files[0]);
     }
   };
 
-    
   return (
     <>
       <Container
@@ -226,7 +243,7 @@ function ClientForm(props) {
                 style={{ backgroundColor: "#ffffff", border: "none" }}
               >
                 <Card.Title className="text-center mb-5 heading">
-                  Formulario di Registrashon
+                  Formulario pa aplikashon pa kliente nobo
                 </Card.Title>
               </Card.Header>
               <Card.Body>
@@ -552,7 +569,181 @@ function ClientForm(props) {
                       </Col>
                     </Row>
                   ) : null}
+                  {/* new add inputs */}
                   <Row>
+                    <Col sm="12" lg="6">
+                      <label className="mr-5 requiredelement">Kasa</label>
+                    </Col>
+                    <Col sm="12" lg="6">
+                      <Form.Check
+                        inline
+                        label="Si"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1 "
+                        // name="Kasa"
+                        // checked={Kasa}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                      &nbsp; &nbsp;
+                      <Form.Check
+                        inline
+                        label="No"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1"
+                        // name="Kasa"
+                        // checked={!Kasa}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="padding-class">
+                    <Col sm="12">
+                      <Form.Group>
+                        <label className="requiredelement">
+                          Nomber di Kasa
+                        </label>
+                        <Form.Control
+                          required
+                          placeholder="Nomber di Kasa"
+                          type="text"
+                          // value={prtn}
+                          // name="prtn"
+                          className="placeholder-Class"
+                          style={{ padding: "20px 10px", fontSize: "14px" }}
+                          onChange={(e) => handleInputChange(e)}
+                        ></Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                          Please provide a value.
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  {/* <Row className="padding-class">
+                    <Col sm="12" lg="6">
+                      <label className="mr-5 requiredelement">Yu</label>
+                    </Col>
+                    <Col sm="12" lg="6">
+                      <Form.Check
+                        inline
+                        label="Si"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1 "
+                        // name="yu"
+                        // checked={yu}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                      &nbsp; &nbsp;
+                      <Form.Check
+                        inline
+                        label="No"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1"
+                        // name="yu"
+                        // checked={!yu}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                    </Col>
+                  </Row> */}
+                  <Row className="padding-class">
+                    <Col sm="12" lg="6">
+                      <label className="mr-5 requiredelement">Bibienda</label>
+                    </Col>
+                    <Col sm="12" lg="6">
+                      <Form.Check
+                        inline
+                        label="Kas propio"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1 "
+                        // name="bibienda"
+                        // checked={bibienda}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                      &nbsp; &nbsp;
+                      <Form.Check
+                        inline
+                        label="Hur"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1"
+                        // name="bibienda"
+                        // checked={!bibienda}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                      &nbsp; &nbsp;
+                      <Form.Check
+                        inline
+                        label="Serka Mayor"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1"
+                        // name="bibienda"
+                        // checked={!bibienda}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+                  <Row className="padding-class">
+                    <Col sm="12" md="6" lg="4">
+                      <Form.Group>
+                        <label> Tel Trabou</label>
+                        <Form.Control
+                          as="select"
+                          defaultValue=""
+                          required
+                          // value={teltrabou}
+                          // name="teltrabou"
+                          onChange={(e) => {
+                            // setWorkNoOption(e.target.value);
+                          }}
+                          style={{ fontSize: "14px", height: "41px" }}
+                        >
+                          <option value={"+5999"}> +5999</option>
+                          <option value={"+599"}> +599</option>
+                          <option value={"+297"}> +297</option>
+                        </Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                          Please provide a value.
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                    <Col sm="12" md="6" lg="8">
+                      <Form.Group>
+                        <label>&nbsp;</label>
+                        <Form.Control
+                          placeholder="00-0000-00"
+                          type="text"
+                          // value={teltrabouNo}
+                          // name="teltrabouNo"
+                          onChange={(e) => handleInputChange(e)}
+                          className="placeholder-Class"
+                          style={{ fontSize: "14px", height: "41px" }}
+                        ></Form.Control>
+                        <Form.Control.Feedback type="invalid">
+                          Please provide a value.
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row className="padding-class">
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">
                         A yega di tuma bon den pasado kaba?
@@ -726,12 +917,10 @@ function ClientForm(props) {
   );
 }
 
-export default ClientForm;
+export default ClientNoboForm;
 
-ClientForm.propTypes = {
+ClientNoboForm.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-
-
