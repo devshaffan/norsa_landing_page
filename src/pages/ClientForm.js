@@ -708,7 +708,7 @@ function ClientForm(props) {
                     <Col sm="12">
                       <div className="button-wrapper">
                         <Button className="add-btn res-size" type="submit" disabled={isLoading}>
-                          {isLoading ? <i class="fa fa-spinner" aria-hidden="true">Saving..</i> : <div>Save</div>}
+                          {isLoading ? <div> <i class="fa fa-spinner" aria-hidden="true">&nbsp;</i> Saving...</div> : <div>Save</div>}
                         </Button>
                         {/* <Link to="#">
                           <Button className="delete-btn res-size">Back</Button>
