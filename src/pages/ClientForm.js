@@ -716,27 +716,23 @@ function ClientForm(props) {
                       </div>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col sm="12">
-                      <Form.Group>
-                        <label className="" style={{textAlign : "center"}}>
-                          <br />
-                          <br />
-                          Si bo mester di yudansa pa yena e formulario,porfabor yama nos na +5999 696-0094
-                        </label>
 
-                        <Form.Control.Feedback type="invalid">
-                          Please provide a value.
-                        </Form.Control.Feedback>
-                      </Form.Group>
+                  <Row className="text-center mt-4">
+                    <Col sm="12">
+                      <div style={{fontSize : "15px"}}>
+                        <br />
+                        Si bo mester di yudansa pa yena e formulario,porfabor yama nos na <strong>+5999 696-0094</strong>
+                      </div>
                     </Col>
                   </Row>
                   <div className="clearfix"></div>
                 </Form>
+
               </Card.Body>
             </Card>
           </Col>
         </Row>
+
       </Container>
     </>
   );
