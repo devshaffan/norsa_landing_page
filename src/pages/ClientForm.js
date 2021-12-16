@@ -587,45 +587,46 @@ function ClientForm(props) {
                       />
                     </Col>
                   </Row>
-                  <Row className="padding-class-new">
-                    <Col sm="12">
-                      <Form.Group>
-                        <label className="requiredelement">
-                          Si e Kontesta ta si, serka ken?
-                        </label>
-                        <Form.Control
-                          as="select"
-                          defaultValue=""
-                          placeholder="select dealer"
-                          name="Dealer_id"
-                          value={Dealer_id}
-                          style={{ fontSize: "14px", height: "41px" }}
-                          onChange={(e) => {
-                            console.log(e);
-                            console.log("e.target.value", e.target.value);
-                            handleInputChange(e);
-                          }}
-                        >
-                          {dealers?.map((item, index) => {
-                            if (index == 0) {
+                  {RecievedCreditInPast === true &&
+                    <Row className="padding-class-new">
+                      <Col sm="12">
+                        <Form.Group>
+                          <label className="requiredelement">
+                            Si e Kontesta ta si, serka ken?
+                          </label>
+                          <Form.Control
+                            as="select"
+                            defaultValue=""
+                            placeholder="select dealer"
+                            name="Dealer_id"
+                            value={Dealer_id}
+                            style={{ fontSize: "14px", height: "41px" }}
+                            onChange={(e) => {
+                              console.log(e);
+                              console.log("e.target.value", e.target.value);
+                              handleInputChange(e);
+                            }}
+                          >
+                            {dealers?.map((item, index) => {
+                              if (index == 0) {
+                                return (
+                                  <option value={item.id}>
+                                    Dealers : {item.Code}
+                                  </option>
+                                );
+                              }
                               return (
-                                <option value={item.id}>
-                                  Dealers : {item.Code}
-                                </option>
+                                <option value={item.id}> {item.Code}</option>
                               );
-                            }
-                            return (
-                              <option value={item.id}> {item.Code}</option>
-                            );
-                          })}
-                        </Form.Control>
-                        <Form.Control.Feedback type="invalid">
-                          Please provide a value.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
+                            })}
+                          </Form.Control>
+                          <Form.Control.Feedback type="invalid">
+                            Please provide a value.
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  }
                   <Row>
                     <Col sm="12">
                       <Form.Group>
