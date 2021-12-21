@@ -16,12 +16,12 @@ const App = () => {
         <Helmet>
           <meta charSet="utf-8" />
           <title> Norsa N.V.</title>
-          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
         </Helmet>
         <Router>
           <Navigation />
           <Routes>
             <Route exact path="/" element={<ClientForm />} />
+            {/* <Route exact path="/" element={<Home />} /> */}
           </Routes>
           <Contact />
         </Router>

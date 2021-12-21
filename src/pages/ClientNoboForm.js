@@ -13,8 +13,6 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import "./clientForm.css";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -59,7 +57,8 @@ function ClientNoboForm(props) {
     RecievedCreditInPast: false,
     // Kasa: false,
     // prtn:"",
-    // yu: false,
+    Yu: false,
+    // Kantidate: false,
     // bibienda: "",
     // teltrabou: "",
     // teltrabouNo:"",
@@ -83,7 +82,8 @@ function ClientNoboForm(props) {
     RecievedCreditInPast,
     // kasa,
     // prtn,
-    // yu,
+    Yu,
+    Kantidate,
     // bibienda,
     // teltrabou,
     // teltrabouNo,
@@ -248,24 +248,6 @@ function ClientNoboForm(props) {
               </Card.Header>
               <Card.Body>
                 <Form onSubmit={handleSubmit} style={{ border: "none" }}>
-                  {/*<Row>
-                    <Col  md="12">
-                      <Form.Group>
-                        <label>Date</label>
-                        <Form.Control
-                          required
-                          placeholder="123"
-                          type="date"
-                          value={Date}
-                          name="Date"
-                          onChange={(e) => handleInputChange(e)}
-                        ></Form.Control>
-                        <Form.Control.Feedback type="invalid">
-                          Please provide a value.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row> */}
                   <Row className="padding-class">
                     <Col sm="12" lg="2">
                       <Form.Group>
@@ -624,7 +606,7 @@ function ClientNoboForm(props) {
                       </Form.Group>
                     </Col>
                   </Row>
-                  {/* <Row className="padding-class">
+                  <Row className="padding-class">
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">Yu</label>
                     </Col>
@@ -635,8 +617,21 @@ function ClientNoboForm(props) {
                         name="group1"
                         type="Radio"
                         className="radio-btn mt-1 "
-                        // name="yu"
-                        // checked={yu}
+                        name="Yu"
+                        checked={Yu}
+                        onClick={(e) => {
+                          handleInputChange(e);
+                        }}
+                      />
+                      &nbsp; &nbsp;
+                      <Form.Check
+                        inline
+                        label="Kantidate"
+                        name="group1"
+                        type="Radio"
+                        className="radio-btn mt-1"
+                        // name="Yu"
+                        // checked={!Yu}
                         onClick={(e) => {
                           handleInputChange(e);
                         }}
@@ -648,14 +643,14 @@ function ClientNoboForm(props) {
                         name="group1"
                         type="Radio"
                         className="radio-btn mt-1"
-                        // name="yu"
-                        // checked={!yu}
+                        name="Yu"
+                        checked={!Yu}
                         onClick={(e) => {
                           handleInputChange(e);
                         }}
                       />
                     </Col>
-                  </Row> */}
+                  </Row>
                   <Row className="padding-class">
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">Bibienda</label>
@@ -777,45 +772,46 @@ function ClientNoboForm(props) {
                       />
                     </Col>
                   </Row>
-                  <Row className="padding-class-new">
-                    <Col sm="12">
-                      <Form.Group>
-                        <label className="requiredelement">
-                          Si e Kontesta ta si, serka ken?
-                        </label>
-                        <Form.Control
-                          as="select"
-                          defaultValue=""
-                          placeholder="select dealer"
-                          name="Dealer_id"
-                          value={Dealer_id}
-                          style={{ fontSize: "14px", height: "41px" }}
-                          onChange={(e) => {
-                            console.log(e);
-                            console.log("e.target.value", e.target.value);
-                            handleInputChange(e);
-                          }}
-                        >
-                          {dealers?.map((item, index) => {
-                            if (index == 0) {
+                  {RecievedCreditInPast === true && (
+                    <Row className="padding-class-new">
+                      <Col sm="12">
+                        <Form.Group>
+                          <label className="requiredelement">
+                            Si e Kontesta ta si, serka ken?
+                          </label>
+                          <Form.Control
+                            as="select"
+                            defaultValue=""
+                            placeholder="select dealer"
+                            name="Dealer_id"
+                            value={Dealer_id}
+                            style={{ fontSize: "14px", height: "41px" }}
+                            onChange={(e) => {
+                              console.log(e);
+                              console.log("e.target.value", e.target.value);
+                              handleInputChange(e);
+                            }}
+                          >
+                            {dealers?.map((item, index) => {
+                              if (index == 0) {
+                                return (
+                                  <option value={item.id}>
+                                    Dealers : {item.Code}
+                                  </option>
+                                );
+                              }
                               return (
-                                <option value={item.id}>
-                                  Dealers : {item.Code}
-                                </option>
+                                <option value={item.id}> {item.Code}</option>
                               );
-                            }
-                            return (
-                              <option value={item.id}> {item.Code}</option>
-                            );
-                          })}
-                        </Form.Control>
-                        <Form.Control.Feedback type="invalid">
-                          Please provide a value.
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
+                            })}
+                          </Form.Control>
+                          <Form.Control.Feedback type="invalid">
+                            Please provide a value.
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  )}
                   <Row>
                     <Col sm="12">
                       <Form.Group>
@@ -852,57 +848,14 @@ function ClientNoboForm(props) {
                         />
                       </Col>
                     </Row>
-                  ) : (
-                    <div>
-                      {/* <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "20px",
-                          marginTop: "10px",
-                          marginLeft: "20px",
-                        }}
-                      >
-                        <CircularProgress />
-                        <div>
-                          <h4
-                            style={{
-                              color: "#344CB7",
-                              marginTop: "5px",
-                              fontWeight: "500",
-                            }}
-                          >
-                            Uplaoding image .....
-                          </h4>
-                        </div>
-                      </Box> */}
-                    </div>
-                  )}
-                  {/* <Row  className="padding-class">
-                    <Col sm="12"  md="12">
-                      <Form.Check
-                        inline
-                        label="Active"
-                        name="group1"
-                        type="Radio"
-                        className="mr-5"
-                        name="Status"
-                        checked={Status}
-                        onClick={(e) => {
-                          handleInputChange(e);
-                        }}
-                      />
-                    </Col>
-                  </Row> */}
+                  ) : null
+                  }
                   <Row className="text-center mt-2">
                     <Col sm="12">
                       <div className="button-wrapper">
                         <Button className="add-btn res-size" type="submit">
                           Save
                         </Button>
-                        {/* <Link to="#">
-                          <Button className="delete-btn res-size">Back</Button>
-                        </Link> */}
                       </div>
                     </Col>
                   </Row>
