@@ -17,7 +17,6 @@ const App = () => {
         <Helmet>
           <meta charSet="utf-8" />
           <title> Norsa N.V.</title>
-          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
         </Helmet>
         <Router>
           <Navigation />
