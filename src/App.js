@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Contact from "./components/Contact";
 import Home from "./pages/Home";
 import ClientForm from "./pages/ClientForm";
+import ClientNoboForm from "./pages/ClientNoboForm";
 import "./App.css";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Navigation />
           <Routes>
             <Route exact path="/" element={<ClientForm />} />
+            <Route exact path="/ClientNoboForm" element={<ClientNoboForm />} />
           </Routes>
           <Contact />
         </Router>

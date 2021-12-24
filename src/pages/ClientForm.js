@@ -173,7 +173,7 @@ function ClientForm(props) {
     data.append("file", file);
     data.append("id", uniqueID);
     data.append('Client_id', formData.id);
-    return addClientImage(data)
+    return addClientImage(data);
   }
 
   const handleSubmit = (event) => {
