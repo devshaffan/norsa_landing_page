@@ -17,8 +17,26 @@ export function getNextId() {
 }
 
 export function addClientImage(formData) {
-    
+
     return axios.post(address + '/api/public/clientProfilePicture/createImage', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    })
+}
+
+export function addSalarySlips(formData) {
+
+    return axios.post(address + '/api/css/add', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    })
+}
+
+export function addBankStatement(formData) {
+
+    return axios.post(address + '/api/cbs/add', formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
         }
