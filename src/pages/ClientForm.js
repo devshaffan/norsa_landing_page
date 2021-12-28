@@ -1,23 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-
 // react-bootstrap components
 import {
-  Badge,
   Button,
   Card,
   Form,
-  Navbar,
-  Nav,
   Container,
   Row,
   Col,
 } from "react-bootstrap";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import './clientForm.css'
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import addClient from "../services/client";
 import _uniqueId from "lodash/uniqueId";

@@ -7,12 +7,7 @@ const Navigation = () => {
     <div>
       <div className="navbar_wrapper">
         <div className="logo_wrapper">
-          <img
-            src="/img/norsalogo.png"
-            className="img-fluid"
-            alt="logo"
-            style={{ width: "150px" }}
-          />
+          <img src="/img/norsalogo.png" className="img-fluid" alt="logo" style={ { width: "150px" } } />
         </div>
       </div>
     </div>
