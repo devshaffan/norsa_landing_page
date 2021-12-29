@@ -461,7 +461,7 @@ function ClientNoboForm(props) {
                       </Col>
                     </Row> : "" }
                   {/* Housing Field */}
-                  <Row className="padding-class">
+                  <Row className="padding-class" style={{marginTop:"5px"}}>
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">Bibienda</label>
                     </Col>
