@@ -11,9 +11,15 @@ export function getActiveClientList() {
 
     return axios.get(address + '/api/public/clients/getActiveClientList')
 }
+
 export function getNextId() {
 
     return axios.get(address + '/api/public/clients/getNextK_Id')
+}
+
+export function getNextNK_Id() {
+
+    return axios.get(address + '/api/public/clients/getNextNK_Id')
 }
 
 export function addClientImage(formData) {

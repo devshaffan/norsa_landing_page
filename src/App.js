@@ -5,10 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { createTheme } from "@material-ui/core/styles";
 import Navigation from "./components/Navigation";
 import Contact from "./components/Contact";
-import ClientForm from "./pages/ClientForm";
-import ClientNoboForm from "./pages/ClientNoboForm";
-import { Forms } from "./pages/tabs";
-// import { TabContainer, Tab } from "./components/tab";
+import Home from './pages/Home';
 import "./App.css";
 
 const App = () => {
@@ -23,8 +20,8 @@ const App = () => {
         <Router>
           <Navigation />
           <Routes>
-            {/* <Route exact path="/" element={<TabContainer />} /> */}
-            <Route path="/" element={<Forms />} />
+            <Route exact path="/" element={<Home />} />
+            {/* <Route path="/" element={<Forms />} /> */}
             {/* <Route exact path="/ClientNoboForm" element={<ClientNoboForm />} /> */}
           </Routes>
           <Contact />
