@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import addClient from "../services/client";
 import _uniqueId from "lodash/uniqueId";
 import { getActiveClientList } from "../services/client";
-import { getNextId } from "../services/client";
+import { getNextNK_Id } from "../services/client";
 import { addClientImage } from "../services/client";
 import { addBankStatement } from "../services/client";
 import { addSalarySlips } from "../services/client";
@@ -48,7 +48,7 @@ function ClientNoboForm(props) {
   const { children, value, index, ...other } = props;
   useEffect(() => {
     // Next Form ID Api Calling
-    getNextId().then(function (response) {
+    getNextNK_Id().then(function (response) {
       console.log(response);
       setFormData({ ...formData, ["id"]: response.data.id, ["Code"]: response.data.id });
     }).catch(function (error) {
