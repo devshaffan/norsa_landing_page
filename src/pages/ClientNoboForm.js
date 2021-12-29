@@ -469,21 +469,21 @@ function ClientNoboForm(props) {
                       <Form.Check
                         inline label="Kas propio" name="group1" type="Radio" className="radio-btn mt-1 " value="0"
                         name="Housing"
-                        checked={Housing}
+                        checked={ Housing === "0" ? true : false }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
                         inline label="Hur" name="group1" type="Radio" className="radio-btn mt-1" value="1"
                         name="Housing"
-                        checked={!Housing}
+                        checked={ Housing === "1" ? true : false }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
                         inline label="Serka Mayor" name="group1" type="Radio" className="radio-btn mt-1" value="2"
                         name="Housing"
-                        checked={!Housing}
+                        checked={ Housing === "2" ? true : false }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
@@ -534,27 +534,28 @@ function ClientNoboForm(props) {
                     </Col>
                   </Row>
                   {/* Dealer Id Field */}
-                  <Row className="padding-class-new">
-                    <Col sm="12">
-                      <Form.Group>
-                        <label className="requiredelement">
-                          Si e Kontesta ta si, serka ken?
-                        </label>
-                        <Form.Control
-                          as="select" defaultValue="" placeholder="select dealer" name="Dealer_id" value={Dealer_id}
-                          onChange={(e) => { handleInputChange(e) }} style={{ fontSize: "14px", height: "41px" }}
-                        >
-                          {dealers?.map((item, index) => {
-                            if (index == 0) {
-                              return <option value={item.id}>Dealers : {item.Code}</option>
-                            }
-                            return <option value={item.id}> {item.Code}</option>
-                          })}
-                        </Form.Control>
-                        <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>
+                  { RecievedCreditInPast ?
+                    <Row className="padding-class-new">
+                      <Col sm="12">
+                        <Form.Group>
+                          <label className="requiredelement">
+                            Si e Kontesta ta si, serka ken?
+                          </label>
+                          <Form.Control
+                            as="select" defaultValue="" placeholder="select dealer" name="Dealer_id" value={Dealer_id}
+                            onChange={(e) => { handleInputChange(e) }} style={{ fontSize: "14px", height: "41px" }}
+                          >
+                            {dealers?.map((item, index) => {
+                              if (index == 0) {
+                                return <option value={item.id}>Dealers : {item.Code}</option>
+                              }
+                              return <option value={item.id}> {item.Code}</option>
+                            })}
+                          </Form.Control>
+                          <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+                    </Row> : "" }
                   {/* Upload Image Field */}
                   <Row>
                     <Col sm="12">
