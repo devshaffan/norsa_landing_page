@@ -38,11 +38,11 @@ function ClientNoboForm(props) {
   const [formData, setFormData] = React.useState({
     id: null, Date: "2021-01-01", Code: "", FirstName: "", LastName: "", address: "", idCard: "", WorkNo: "", ContactNo: "", WorksAt: "",
     Email: "", FaxNumber: "", Status: 2, MaxBorrowAmount: "", Dealer_id: "", SourceOfIncome: "", ExpiryDate: "", RecievedCreditInPast: false,
-    Partner: false, child: false, noOfChild: "", phoneNumber: "", NameOfPartner : ""
+    Partner: false, Children: false, ChildrenCount: "", phoneNumber: "", NameOfPartner : "", Housing: "0"
   });
   const {
     id, Code, FirstName, LastName, idCard, WorkNo, ContactNo, WorksAt, Email, address, FaxNumber, Status, MaxBorrowAmount, Dealer_id,
-    SourceOfIncome, RecievedCreditInPast, Partner, child, noOfChild, phoneNumber, Date, ExpiryDate, NameOfPartner
+    SourceOfIncome, RecievedCreditInPast, Partner, Children, ChildrenCount, phoneNumber, Date, ExpiryDate, NameOfPartner, Housing
   } = formData;
   const [fileForm, setFileForm] = React.useState({ id: _uniqueId("prefix-"), filePath: "", Client_id: "" });
   const { children, value, index, ...other } = props;
@@ -79,7 +79,7 @@ function ClientNoboForm(props) {
       }
       return "only alphabets and spaces";
     }
-    if (name === "WorkNo" || name === "FaxNumber" || name === "ContactNo" || name === "noOfChild" || name === "phoneNumber" || name == "idCard") {
+    if (name === "WorkNo" || name === "FaxNumber" || name === "ContactNo" || name === "ChildrenCount" || name === "phoneNumber" || name == "idCard") {
       let pattern = new RegExp("^[0-9 +]*$");
       if (pattern.test(value)) {
         return true;
@@ -106,8 +106,12 @@ function ClientNoboForm(props) {
       setFormData({ ...formData, [e.target.name]: e.target.value });
       return;
     }
-    if (e.target.name == "child") {
-      setFormData({ ...formData, [e.target.name]: !child });
+    if ( e.target.name == "Children" ) {
+      setFormData({ ...formData, [e.target.name]: !Children });
+      return;
+    }
+    if ( e.target.name == "Housing" ) {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
       return;
     }
     const valid = validateInput(e.target.name, e.target.value);
@@ -425,65 +429,65 @@ function ClientNoboForm(props) {
                       </Form.Group>
                     </Col>
                   </Row>
-                  {/* Child Field */}
-                  {/* <Row>
+                  {/* Children Field */}
+                  <Row>
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">Yu</label>
                     </Col>
                     <Col sm="12" lg="6">
                       <Form.Check
-                        inline label="Si" type="Radio" className="radio-btn mt-1 " name="child" checked={child}
+                        inline label="Si" type="Radio" className="radio-btn mt-1 " name="Children" checked={ Children }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="No" type="Radio" className="radio-btn mt-1" name="child" checked={!child}
+                        inline label="No" type="Radio" className="radio-btn mt-1" name="Children" checked={ !Children }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
-                  </Row> */}
+                  </Row>
                   {/* Number Of Children Field */}
-                  {/* {child ?
+                  { Children ?
                     <Row className="padding-class">
                       <Col sm="12">
                         <Form.Group>
                           <label className="requiredelement">Kantidat</label>
                           <Form.Control
-                            required placeholder="Kantidat" type="text" value={noOfChild} name="noOfChild" className="placeholder-Class"
+                            required placeholder="Kantidat" type="text" value={ChildrenCount} name="ChildrenCount" className="placeholder-Class"
                             onChange={(e) => handleInputChange(e)} style={{ fontSize: "14px", height: "41px" }}
                           ></Form.Control>
                           <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
                         </Form.Group>
                       </Col>
-                    </Row> : ""} */}
-                  {/* Bibienda Field */}
-                  {/* <Row className="padding-class">
+                    </Row> : "" }
+                  {/* Housing Field */}
+                  <Row className="padding-class">
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">Bibienda</label>
                     </Col>
                     <Col sm="12" lg="6">
                       <Form.Check
-                        inline label="Kas propio" name="group1" type="Radio" className="radio-btn mt-1 "
-                        // name="bibienda"
-                        // checked={bibienda}
+                        inline label="Kas propio" name="group1" type="Radio" className="radio-btn mt-1 " value="0"
+                        name="Housing"
+                        checked={Housing}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="Hur" name="group1" type="Radio" className="radio-btn mt-1"
-                        // name="bibienda"
-                        // checked={!bibienda}
+                        inline label="Hur" name="group1" type="Radio" className="radio-btn mt-1" value="1"
+                        name="Housing"
+                        checked={!Housing}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="Serka Mayor" name="group1" type="Radio" className="radio-btn mt-1"
-                        // name="bibienda"
-                        // checked={!bibienda}
+                        inline label="Serka Mayor" name="group1" type="Radio" className="radio-btn mt-1" value="2"
+                        name="Housing"
+                        checked={!Housing}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
-                  </Row> */}
+                  </Row>
                   <Row className="padding-class">
                     {/* Phone Number Code Field */}
                     <Col sm="12" md="6" lg="4">
