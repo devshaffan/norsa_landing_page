@@ -399,10 +399,10 @@ function ClientNoboForm(props) {
                   ) : null}
                   {/* Partner Field */}
                   <Row>
-                    <Col sm="12" lg="6">
+                    <Col xs="6" sm="6" lg="6">
                       <label className="mr-5 requiredelement">Kasa/Partner</label>
                     </Col>
-                    <Col sm="12" lg="6">
+                    <Col xs="6" sm="6" lg="6">
                       <Form.Check
                         inline label="Si" name="group1" type="Radio" className="radio-btn mt-1 " name="Partner" checked={Partner}
                         onClick={(e) => { handleInputChange(e) }}
@@ -429,12 +429,12 @@ function ClientNoboForm(props) {
                       </Form.Group>
                     </Col>
                   </Row>
-                  {/* Children Field */}
-                  <Row>
-                    <Col sm="12" lg="6">
+                  <Row style={ { alignItems: "center" } }>
+                    {/* Children Field */}
+                    <Col xs="6" sm="6" lg="2">
                       <label className="mr-5 requiredelement">Yu</label>
                     </Col>
-                    <Col sm="12" lg="6">
+                    <Col xs="6" sm="6" lg="3">
                       <Form.Check
                         inline label="Si" type="Radio" className="radio-btn mt-1 " name="Children" checked={ Children }
                         onClick={(e) => { handleInputChange(e) }}
@@ -445,21 +445,24 @@ function ClientNoboForm(props) {
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
-                  </Row>
-                  {/* Number Of Children Field */}
-                  { Children ?
-                    <Row className="padding-class">
-                      <Col sm="12">
-                        <Form.Group>
+                    {/* Number Of Children Field */}
+                    { Children ?
+                      <>  
+                        <Col sm="12" lg="2">
                           <label className="requiredelement">Kantidat</label>
-                          <Form.Control
-                            required placeholder="Kantidat" type="text" value={ChildrenCount} name="ChildrenCount" className="placeholder-Class"
-                            onChange={(e) => handleInputChange(e)} style={{ fontSize: "14px", height: "41px" }}
-                          ></Form.Control>
-                          <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
-                        </Form.Group>
-                      </Col>
-                    </Row> : "" }
+                        </Col>
+                        <Col lg="5">
+                          <Form.Group>
+                            <Form.Control
+                              required placeholder="Kantidat" type="text" value={ChildrenCount} name="ChildrenCount" className="placeholder-Class"
+                              onChange={(e) => handleInputChange(e)} style={{ fontSize: "14px", height: "41px" }}
+                            ></Form.Control>
+                            <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
+                          </Form.Group>
+                        </Col> 
+                      </>
+                    : "" }
+                  </Row>
                   {/* Housing Field */}
                   <Row className="padding-class" style={{marginTop:"5px"}}>
                     <Col sm="12" lg="6">
