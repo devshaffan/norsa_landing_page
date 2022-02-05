@@ -123,8 +123,6 @@ const Contact = () => {
             your information to any mailing lists. The only exception is if the law or a court order compels us to. We will share your information 
             with government agencies if they need or request it.
           </p>
-          <p>
-          </p>
         </div>
       </div>
     </div>
