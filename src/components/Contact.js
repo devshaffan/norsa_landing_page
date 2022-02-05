@@ -113,9 +113,7 @@ const Contact = () => {
         <div className="container text-center">
           <p>
             &copy; 2021 all rights reserved by
-            <span style={{ marginLeft: "5px", color: "#3AAB7B" , fontWeight:"500"}}>
-              Norsa N.V.
-            </span>
+            <span style={ { marginLeft: "5px", color: "#3AAB7B" , fontWeight:"500"} }>Norsa N.V.</span>
           </p>
         </div>
         <div className="container text-center">
