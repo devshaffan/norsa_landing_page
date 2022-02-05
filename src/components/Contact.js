@@ -113,9 +113,15 @@ const Contact = () => {
         <div className="container text-center">
           <p>
             &copy; 2021 all rights reserved by
-            <span style={{ marginLeft: "5px", color: "#3AAB7B" , fontWeight:"500"}}>
-              Norsa N.V.
-            </span>
+            <span style={ { marginLeft: "5px", color: "#3AAB7B" , fontWeight:"500"} }>Norsa N.V.</span>
+          </p>
+        </div>
+        <div className="container text-center">
+          <p>
+            We will not, in any circumstances, share your personal information with other individuals or organizations without your permission, 
+            including public organizations, corporations or individuals, except when applicable by law. We do not sell, communicate or divulge 
+            your information to any mailing lists. The only exception is if the law or a court order compels us to. We will share your information 
+            with government agencies if they need or request it.
           </p>
         </div>
       </div>
