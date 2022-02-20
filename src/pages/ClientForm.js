@@ -715,7 +715,9 @@ function ClientForm(props) {
                     <Col sm="12">
                       <div style={{fontSize : "15px"}}>
                         <br />
-                        Si bo mester di yudansa pa yena e formulario,porfabor yama nos na <strong>+5999 696-0094</strong>
+                        Si bo mester di yudansa pa yena e formulario,porfabor yama nos na<br/>
+                        <strong>Phone Number:</strong>&nbsp;+5999767-1563&nbsp;<br/>
+                        <strong>Whatsapp:</strong>&nbsp;+59997671554
                       </div>
                     </Col>
                   </Row>
