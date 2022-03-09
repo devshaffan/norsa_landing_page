@@ -404,12 +404,12 @@ function ClientNoboForm(props) {
                     </Col>
                     <Col xs="6" sm="6" lg="6">
                       <Form.Check
-                        inline label="Si" name="group1" type="Radio" className="radio-btn mt-1 " name="Partner" checked={Partner}
+                        inline label="Si"  type="Radio" className="radio-btn mt-1 " name="Partner" checked={Partner}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="No" name="group1" type="Radio" className="radio-btn mt-1" name="Partner" checked={!Partner}
+                        inline label="No"  type="Radio" className="radio-btn mt-1" name="Partner" checked={!Partner}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
@@ -470,21 +470,21 @@ function ClientNoboForm(props) {
                     </Col>
                     <Col sm="12" lg="6">
                       <Form.Check
-                        inline label="Kas propio" name="group1" type="Radio" className="radio-btn mt-1 " value="0"
+                        inline label="Kas propio" type="Radio" className="radio-btn mt-1 " value="0"
                         name="Housing"
                         checked={ Housing === "0" ? true : false }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="Hur" name="group1" type="Radio" className="radio-btn mt-1" value="1"
+                        inline label="Hur" type="Radio" className="radio-btn mt-1" value="1"
                         name="Housing"
                         checked={ Housing === "1" ? true : false }
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="Serka Mayor" name="group1" type="Radio" className="radio-btn mt-1" value="2"
+                        inline label="Serka Mayor"  type="Radio" className="radio-btn mt-1" value="2"
                         name="Housing"
                         checked={ Housing === "2" ? true : false }
                         onClick={(e) => { handleInputChange(e) }}
@@ -526,12 +526,12 @@ function ClientNoboForm(props) {
                     </Col>
                     <Col sm="12" lg="6">
                       <Form.Check
-                        inline label="Si" name="group1" type="Radio" className="radio-btn mt-1 " name="RecievedCreditInPast"
+                        inline label="Si"  type="Radio" className="radio-btn mt-1 " name="RecievedCreditInPast"
                         checked={RecievedCreditInPast} onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="No" name="group1" type="Radio" className="radio-btn mt-1" name="RecievedCreditInPast"
+                        inline label="No"  type="Radio" className="radio-btn mt-1" name="RecievedCreditInPast"
                         checked={!RecievedCreditInPast} onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
