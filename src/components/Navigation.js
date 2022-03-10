@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navigation.css";
 
 const Navigation = () => {
@@ -7,7 +8,9 @@ const Navigation = () => {
     <div>
       <div className="navbar_wrapper">
         <div className="logo_wrapper">
-          <img src="/img/norsalogo.png" className="img-fluid" alt="logo" style={ { width: "150px" } } />
+          <Link to='/Home'>
+            <img src="/img/norsalogo.png" className="img-fluid" alt="logo" style={{ width: "150px" }} />
+          </Link>
         </div>
       </div>
     </div>

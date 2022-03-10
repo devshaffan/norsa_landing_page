@@ -1,11 +1,13 @@
 import * as React from "react";
-import {useMediaQuery } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import ClientForm from "./ClientForm";
 import ClientNoboForm from "./ClientNoboForm";
 import "../components/Register.css";
+import { Card } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function a11yProps(index) {
   return {
@@ -15,7 +17,7 @@ function a11yProps(index) {
 }
 
 export default function Home() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(null);
 
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("md"));
@@ -27,7 +29,22 @@ export default function Home() {
   return (
     <div>
       <div className="tab-main-flex">
-        <Tabs
+        <Link to='/clientForm'>
+          <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>
+
+            <Card variant="outlined">Clinet Form</Card>
+          </div>
+        </Link>
+        <div style={{ opacity: 0 }}>
+          bla bla bla
+        </div>
+        <Link to='/clientNoboForm'>
+          <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>
+            <Card variant="outlined">Clinet Nobo Form</Card>
+          </div>
+        </Link>
+
+        {/* <Tabs
           value={value}
           onChange={handleChange}
           aria-label="tabs"
@@ -46,10 +63,11 @@ export default function Home() {
             {...a11yProps(1)}
             className="tab-styling"
           />
-        </Tabs>
+
+        </Tabs> */}
       </div>
-      <ClientForm value={value} index={0} />
-      <ClientNoboForm value={value} index={1} />
+      {/* <ClientForm value={value} index={0} />
+      <ClientNoboForm value={value} index={1} /> */}
     </div>
   );
 }

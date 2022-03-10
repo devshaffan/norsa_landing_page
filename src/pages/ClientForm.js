@@ -556,7 +556,6 @@ function ClientForm(props) {
                       <Form.Check
                         inline
                         label="Si"
-                        name="group1"
                         type="Radio"
                         className="radio-btn mt-1 "
                         name="RecievedCreditInPast"
@@ -569,7 +568,6 @@ function ClientForm(props) {
                       <Form.Check
                         inline
                         label="No"
-                        name="group1"
                         type="Radio"
                         className="radio-btn mt-1"
                         name="RecievedCreditInPast"
