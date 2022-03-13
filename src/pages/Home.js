@@ -8,6 +8,8 @@ import ClientNoboForm from "./ClientNoboForm";
 import "../components/Register.css";
 import { Card } from "@mui/material";
 import { Link } from "react-router-dom";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
 
 function a11yProps(index) {
   return {
@@ -28,22 +30,40 @@ export default function Home() {
 
   return (
     <div>
-      <div className="tab-main-flex">
-        <Link to='/clientForm'>
-          <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>
+      <div className="tab-main-flex" style={{ margin: "40px", height: "300px" }}>
+        <ButtonGroup variant="contained" style={{ padding: "10px" }}>
+          <Button style={{ padding: "20px 40px" }}>
+            <Link to='/clientForm' style={{all: "unset"}}>
+              <div style={{ fontWeight: "bold", fontSize: "1.5vw", fontFamily: "sans-serif" }}>
 
-            <Card variant="outlined">Clinet Form</Card>
-          </div>
-        </Link>
-        <div style={{ opacity: 0 }}>
-          bla bla bla
-        </div>
-        <Link to='/clientNoboForm'>
-          <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>
-            <Card variant="outlined">Clinet Nobo Form</Card>
-          </div>
-        </Link>
+                Client Form
+              </div>
+            </Link>
+          </Button>
+          <Button style={{ padding: "20px 40px" }}>
+            <Link to='/clientNoboForm' style={{all: "unset"}}>
+              <div style={{ fontWeight: "bold", fontSize: "1.5vw", fontFamily: "sans-serif" }}>
+                Client Nobo Form
+              </div>
+            </Link>
+          </Button>
+        </ButtonGroup>
+        {/* <Card variant="outlined">
+          <Link to='/clientForm'>
+            <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>
 
+              Clinet Form
+            </div>
+          </Link>
+          <div style={{ opacity: 0 }}>
+            bla bla bla
+          </div>
+          <Link to='/clientNoboForm'>
+            <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>
+              Clinet Nobo Form
+            </div>
+          </Link>
+        </Card> */}
         {/* <Tabs
           value={value}
           onChange={handleChange}

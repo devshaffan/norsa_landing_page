@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* usama */
+.css-zqcytf-MuiButtonGroup-root .MuiButtonGroup-grouped:not(:last-of-type) {
+	border-color: #608d8d !important;
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+	background-color: #608d8d !important;
+}
