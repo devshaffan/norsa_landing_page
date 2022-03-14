@@ -29,9 +29,25 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="home">
       <div className="tab-main-flex" style={{ margin: "40px", height: "300px" }}>
-        <ButtonGroup variant="contained" style={{ padding: "10px" }}>
+        <div class="cards">
+          <Link to='/clientForm' style={{all: "unset"}}>
+            <div class="card card-1">
+                <div className="buttonText">
+                  Client Form
+                </div>
+            </div>
+          </Link>
+          <Link to='/clientNoboForm' style={{all: "unset"}}>
+            <div class="card card-2">
+                <div className="buttonText">
+                  Client Nobo Form
+                </div>
+            </div>
+          </Link>
+        </div>
+        {/* <ButtonGroup variant="contained" style={{ padding: "10px" }}>
           <Button style={{ padding: "20px 40px" }}>
             <Link to='/clientForm' style={{all: "unset"}}>
               <div style={{ fontWeight: "bold", fontSize: "1.5vw", fontFamily: "sans-serif" }}>
@@ -47,7 +63,7 @@ export default function Home() {
               </div>
             </Link>
           </Button>
-        </ButtonGroup>
+        </ButtonGroup> */}
         {/* <Card variant="outlined">
           <Link to='/clientForm'>
             <div style={{ fontSize: "3vw", fontFamily: "sans-serif" }}>

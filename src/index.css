@@ -21,3 +21,104 @@ code {
 .css-sghohy-MuiButtonBase-root-MuiButton-root {
 	background-color: #608d8d !important;
 }
+/* CARDS */
+
+.home .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.home .card {
+  margin: 20px;
+  padding: 20px;
+  width: 500px;
+  min-height: 200px;
+  display: grid;
+  grid-template-rows: 20px 50px 1fr 50px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.home .card:hover {
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+.home .card__link,
+.home .card__exit,
+.home .card__icon {
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home .card__link::after {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  content: "";
+  width: 0%;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s;
+}
+
+.home .card__link:hover::after {
+  width: 100%;
+}
+
+.home .card__exit {
+  grid-row: 1/2;
+  justify-self: end;
+}
+
+.home .card__icon {
+  grid-row: 2/3;
+  font-size: 30px;
+}
+
+.home .card__title {
+  grid-row: 3/4;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.home .card__apply {
+  grid-row: 4/5;
+  align-self: center;
+}
+
+/* CARD BACKGROUNDS */
+.home .card-1 {
+  background: radial-gradient(#507978, #82b6b5);
+  cursor: pointer;
+}
+
+.home .card-2 {
+  background: radial-gradient(#507978, #82b6b5);
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1600px) {
+  .home .cards {
+    justify-content: center;
+  }
+}
+
+.home .cards .card .buttonText {
+  font-weight: bold;
+  font-size: 30px;
+  font-family: sans-serif;
+  width: 100%;
+  height: auto;
+  margin-left: 20px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
