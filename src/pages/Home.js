@@ -35,14 +35,14 @@ export default function Home() {
           <Link to='/clientForm' style={{all: "unset"}}>
             <div class="card card-1">
                 <div className="buttonText">
-                  Client Form
+                  Kliente Eksistente
                 </div>
             </div>
           </Link>
           <Link to='/clientNoboForm' style={{all: "unset"}}>
             <div class="card card-2">
                 <div className="buttonText">
-                  Client Nobo Form
+                  kliente Nobo
                 </div>
             </div>
           </Link>

@@ -115,10 +115,25 @@ code {
   font-family: sans-serif;
   width: 100%;
   height: auto;
-  margin-left: 20px;
+  text-align: center;
   color: #fff;
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+@media screen and  (min-width: 960px) and (max-width: 1160px) {
+  .home .card {width: 400px;}
+}
+
+@media screen and  (min-width: 200px) and (max-width: 960px) {
+  .home .cards {display: grid;grid-template-columns: 1fr 1fr;width: 100%;grid-gap: 10px;}
+  .home .cards .card {margin: 0;width: 100%;min-height: 180px;}
+}
+
+@media screen and  (min-width: 200px) and (max-width: 650px) {
+  .home .cards {grid-template-columns: 1fr;}
+  .home .cards .card {min-height: 80px;}
+  .home .cards .card .buttonText {font-size: 20px;}
 }
