@@ -206,7 +206,7 @@ function ClientNoboForm(props) {
           <Col md="9" className="main-container">
             <Card className="form-wrapper mt-4" style={{ border: "none" }}>
               <Card.Header style={{ backgroundColor: "#ffffff", border: "none" }}>
-                <Card.Title className="text-center mb-5 heading">Formulario pa aplikashon pa kliente nobo</Card.Title>
+                <Card.Title className="text-center mb-5 heading">Formulario di aplikashon pa kliente nobo</Card.Title>
               </Card.Header>
               <Card.Body>
                 <Form onSubmit={handleSubmit} style={{ border: "none" }}>
