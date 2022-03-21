@@ -42,7 +42,7 @@ export default function Home() {
           <Link to='/clientNoboForm' style={{all: "unset"}}>
             <div class="card card-2">
                 <div className="buttonText">
-                  kliente Nobo
+                  Kliente Nobo
                 </div>
             </div>
           </Link>
