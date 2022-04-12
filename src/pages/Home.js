@@ -11,6 +11,56 @@ import { Link } from "react-router-dom";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 
+// popup dialog box imports
+import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+// import CloseIcon from '@mui/icons-material/Close';
+import Typography from '@mui/material/Typography';
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+
+const BootstrapDialogTitle = (props) => {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          {/* <CloseIcon /> */}
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+};
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
+
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -28,9 +78,78 @@ export default function Home() {
     setValue(newValue);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div className="home">
-      <div className="tab-main-flex" style={{ margin: "40px", height: "300px" }}>
+      {/* popup dialog content start */}
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+          Komunikado
+        </BootstrapDialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            Norsa N.V. ke partisipa ku entrante <b style={{color: "red"}}>01 April 2022</b> sigiente negoshi nan ta asepta <b>UNIKAMENTE</b> Norsa Card pa hasi kompras:
+            <br/>
+            <b>Supermerkado:</b> <b style={{color: "red"}}>(Por hasi kompras UNIKAMENTE na e supermerkado nan aki)</b>
+          </Typography>
+          <Typography gutterBottom>
+            Alves Supermarket <br/>
+            Best Buy Supermarket <br/>
+            Beurs Mini Market <br/>
+            Bon Bini Supermarket <br/>
+            California Supermarket <br/>
+            Cost U Less <br/>
+            Dande <br/>
+            Goisco <br/>
+            Luna Park <br/>
+            Boulevard Supermarket <br/>
+          </Typography>
+          <Typography gutterBottom>
+            <b>Negoshi nan: (Tur otro negoshi nan ta tuma bon di papel ahinda)</b>
+          </Typography>
+          <Typography gutterBottom>
+            Balanis Mommies Angels <br/>
+            Balanis Sta Maria <br/>
+            Bon Prijs <br/>
+            Building Depot <br/>
+            Hello <br/>
+            Kriss Kross <br/>
+            P.K. Electronics <br/>
+            La Curacao Zeelandia <br/>
+            La Curacao Super Store <br/>
+            La Curacao Otrabanda <br/>
+            Muebleria di Credito <br/>
+            Senjor Barata <br/>
+            Super Barata <br/>
+          </Typography>
+          <Typography gutterBottom>
+            <b style={{color: "red"}}>*Nos lo sigi tene boso na altura, kual ta e negoshi nan ku lo sigi bini aserka ku ta uza Norsa Card.</b>
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose} style={{color: "#70a09f"}}>
+            Close
+          </Button>
+        </DialogActions>
+      </BootstrapDialog>
+      {/* popup dialog content end */}
+
+      <div className="tab-main-flex" style={{ margin: "40px", height: "300px", flexDirection: "column" }}>
+        <Button className="customDialogButton" variant="outlined" onClick={handleClickOpen}>
+          Komunikado
+        </Button>
         <div class="cards">
           <Link to='/clientForm' style={{all: "unset"}}>
             <div class="card card-1">
