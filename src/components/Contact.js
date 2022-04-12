@@ -112,7 +112,7 @@ const Contact = () => {
       <div id="footer">
         <div className="container text-center">
           <p>
-            &copy; 2021 all rights reserved by
+            &copy; 2022 all rights reserved by
             <span style={ { marginLeft: "5px", color: "#3AAB7B" , fontWeight:"500"} }>Norsa N.V.</span>
           </p>
         </div>
