@@ -160,12 +160,12 @@ function ClientForm(props) {
     }
     return "not a valid email";
   };
-  const handleFileSubmit = () => {
+  const handleFileSubmit = (clientId) => {
     console.log(uniqueID)
     const data = new FormData();
     data.append("file", file);
     data.append("id", uniqueID);
-    data.append('Client_id', formData.id);
+    data.append('Client_id', clientId);
     return addClientImage(data);
   }
 
@@ -183,7 +183,7 @@ function ClientForm(props) {
     addClient(fData)
       .then(function (response) {
         console.log(response)
-        handleFileSubmit()
+        handleFileSubmit(response.data.id)
           .then(function (rsp) {
             alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon")
             window.location.reload(false);
@@ -708,7 +708,6 @@ function ClientForm(props) {
                       </div>
                     </Col>
                   </Row>
-
                   <Row className="text-center mt-4">
                     <Col sm="12">
                       <div style={{fontSize : "15px"}}>
@@ -721,7 +720,6 @@ function ClientForm(props) {
                   </Row>
                   <div className="clearfix"></div>
                 </Form>
-
               </Card.Body>
             </Card>
           </Col>

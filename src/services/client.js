@@ -5,7 +5,7 @@ import axios from "axios"
 
 export default function addClient(formData) {
 
-    return axios.post(address + '/api/public/clients/upsertClient', formData)
+    return axios.post(address + '/api/public/clients/createClient', formData)
 }
 export function getActiveClientList() {
 

@@ -38,7 +38,7 @@ function ClientNoboForm(props) {
   const [formData, setFormData] = React.useState({
     id: null, Date: "2021-01-01", Code: "", FirstName: "", LastName: "", address: "", idCard: "", WorkNo: "", ContactNo: "", WorksAt: "",
     Email: "", FaxNumber: "", Status: 2, MaxBorrowAmount: "", Dealer_id: "", SourceOfIncome: "", ExpiryDate: "", RecievedCreditInPast: false,
-    Partner: false, Children: false, ChildrenCount: "", phoneNumber: "", NameOfPartner : "", Housing: "0"
+    Partner: false, Children: false, ChildrenCount: "", phoneNumber: "", NameOfPartner: "", Housing: "0"
   });
   const {
     id, Code, FirstName, LastName, idCard, WorkNo, ContactNo, WorksAt, Email, address, FaxNumber, Status, MaxBorrowAmount, Dealer_id,
@@ -106,11 +106,11 @@ function ClientNoboForm(props) {
       setFormData({ ...formData, [e.target.name]: e.target.value });
       return;
     }
-    if ( e.target.name == "Children" ) {
+    if (e.target.name == "Children") {
       setFormData({ ...formData, [e.target.name]: !Children });
       return;
     }
-    if ( e.target.name == "Housing" ) {
+    if (e.target.name == "Housing") {
       setFormData({ ...formData, [e.target.name]: e.target.value });
       return;
     }
@@ -132,19 +132,29 @@ function ClientNoboForm(props) {
     return "not a valid email";
   };
   // Image Submit Method
-  const handleFileSubmit = () => {
+  const handleFileSubmit = (clientId) => {
 
     const data = new FormData();
     data.append("file", file);
     data.append("id", uniqueID);
-    data.append("Client_id", formData.id);
+    data.append("Client_id", clientId);
     return addClientImage(data);
   };
-  const handleSalarySlipSubmit = (e) => {
-    return addSalarySlips(salarySlips);
+  const handleSalarySlipSubmit = (clientId) => {
+    const data = new FormData();
+    data.append("id", uniqueID);
+    data.append("file1", salarySlips.file1);
+    data.append("file2", salarySlips.file2);
+    data.append("Client_id", clientId);
+    return addSalarySlips(data);
   };
-  const handleBankStatementSubmit = () => {
-    return addBankStatement(bankStatements);
+  const handleBankStatementSubmit = (clientId) => {
+    const data = new FormData();
+    data.append("id", uniqueID);
+    data.append("file1", bankStatements.file1);
+    data.append("file2", bankStatements.file2);
+    data.append("Client_id", clientId);
+    return addBankStatement(data);
   };
   // Form Submit Method
   const handleSubmit = (event) => {
@@ -159,9 +169,9 @@ function ClientNoboForm(props) {
     fData.WorkNo = workNoOption.trim() + " " + fData.WorkNo.trim();
     fData.ContactNo = contactNoOption.trim() + " " + fData.ContactNo.trim();
     addClient(fData).then(function (response) {
-      handleFileSubmit().then(function (respons) {
-        handleSalarySlipSubmit().then(function (repon) {
-          handleBankStatementSubmit().then(function (respo) {
+      handleFileSubmit(response.data.id).then(function (respons) {
+        handleSalarySlipSubmit(response.data.id).then(function (repon) {
+          handleBankStatementSubmit(response.data.id).then(function (respo) {
             alert("Danki! bo formulario a wordu entrega. \n Nos lo tuma kontakto kubo si nos nester di mas informashon");
             window.location.reload(false);
           }).catch(function (error) {
@@ -186,16 +196,18 @@ function ClientNoboForm(props) {
         alert("Select 2 files only")
         return;
       }
-      const data = new FormData();
-      data.append("id", uniqueID);
-      data.append("file1", e.target.files[0]);
-      data.append("file2", e.target.files[1]);
-      data.append("Client_id", id);
+      let files = {
+        file1: e.target.files[0],
+        file2: e.target.files[1]
+      }
+      if (!files.file1 || !files.file2) {
+        return
+      }
       if (e.target.name == "salarySlips") {
-        setSalarySlips(data)
+        setSalarySlips(files)
       }
       else {
-        setBankStatements(data)
+        setBankStatements(files)
       }
     }
   };
@@ -404,12 +416,12 @@ function ClientNoboForm(props) {
                     </Col>
                     <Col xs="6" sm="6" lg="6">
                       <Form.Check
-                        inline label="Si"  type="Radio" className="radio-btn mt-1 " name="Partner" checked={Partner}
+                        inline label="Si" type="Radio" className="radio-btn mt-1 " name="Partner" checked={Partner}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="No"  type="Radio" className="radio-btn mt-1" name="Partner" checked={!Partner}
+                        inline label="No" type="Radio" className="radio-btn mt-1" name="Partner" checked={!Partner}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
@@ -429,25 +441,25 @@ function ClientNoboForm(props) {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row style={ { alignItems: "center" } }>
+                  <Row style={{ alignItems: "center" }}>
                     {/* Children Field */}
                     <Col xs="6" sm="6" lg="2">
                       <label className="mr-5 requiredelement">Yu</label>
                     </Col>
                     <Col xs="6" sm="6" lg="3">
                       <Form.Check
-                        inline label="Si" type="Radio" className="radio-btn mt-1 " name="Children" checked={ Children }
+                        inline label="Si" type="Radio" className="radio-btn mt-1 " name="Children" checked={Children}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="No" type="Radio" className="radio-btn mt-1" name="Children" checked={ !Children }
+                        inline label="No" type="Radio" className="radio-btn mt-1" name="Children" checked={!Children}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
                     {/* Number Of Children Field */}
-                    { Children ?
-                      <>  
+                    {Children ?
+                      <>
                         <Col sm="12" lg="2">
                           <label className="requiredelement">Kantidat</label>
                         </Col>
@@ -459,12 +471,12 @@ function ClientNoboForm(props) {
                             ></Form.Control>
                             <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
                           </Form.Group>
-                        </Col> 
+                        </Col>
                       </>
-                    : "" }
+                      : ""}
                   </Row>
                   {/* Housing Field */}
-                  <Row className="padding-class" style={{marginTop:"5px"}}>
+                  <Row className="padding-class" style={{ marginTop: "5px" }}>
                     <Col sm="12" lg="6">
                       <label className="mr-5 requiredelement">Bibienda</label>
                     </Col>
@@ -472,21 +484,21 @@ function ClientNoboForm(props) {
                       <Form.Check
                         inline label="Kas propio" type="Radio" className="radio-btn mt-1 " value="0"
                         name="Housing"
-                        checked={ Housing === "0" ? true : false }
+                        checked={Housing === "0" ? true : false}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
                         inline label="Hur" type="Radio" className="radio-btn mt-1" value="1"
                         name="Housing"
-                        checked={ Housing === "1" ? true : false }
+                        checked={Housing === "1" ? true : false}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="Serka Mayor"  type="Radio" className="radio-btn mt-1" value="2"
+                        inline label="Serka Mayor" type="Radio" className="radio-btn mt-1" value="2"
                         name="Housing"
-                        checked={ Housing === "2" ? true : false }
+                        checked={Housing === "2" ? true : false}
                         onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
@@ -526,18 +538,18 @@ function ClientNoboForm(props) {
                     </Col>
                     <Col sm="12" lg="6">
                       <Form.Check
-                        inline label="Si"  type="Radio" className="radio-btn mt-1 " name="RecievedCreditInPast"
+                        inline label="Si" type="Radio" className="radio-btn mt-1 " name="RecievedCreditInPast"
                         checked={RecievedCreditInPast} onClick={(e) => { handleInputChange(e) }}
                       />
                       &nbsp; &nbsp;
                       <Form.Check
-                        inline label="No"  type="Radio" className="radio-btn mt-1" name="RecievedCreditInPast"
+                        inline label="No" type="Radio" className="radio-btn mt-1" name="RecievedCreditInPast"
                         checked={!RecievedCreditInPast} onClick={(e) => { handleInputChange(e) }}
                       />
                     </Col>
                   </Row>
                   {/* Dealer Id Field */}
-                  { RecievedCreditInPast ?
+                  {RecievedCreditInPast ?
                     <Row className="padding-class-new">
                       <Col sm="12">
                         <Form.Group>
@@ -558,7 +570,7 @@ function ClientNoboForm(props) {
                           <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
                         </Form.Group>
                       </Col>
-                    </Row> : "" }
+                    </Row> : ""}
                   {/* Upload Image Field */}
                   <Row>
                     <Col sm="12">
