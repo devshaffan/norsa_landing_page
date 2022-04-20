@@ -231,9 +231,11 @@ export default function Home() {
       {/* popup dialog content end */}
 
       <div className="tab-main-flex" style={{ margin: "40px", height: "300px", flexDirection: "column" }}>
-        <Button className="customDialogButton" variant="outlined" onClick={handleClickOpen}>
-          Komunikado
-        </Button>
+        <div className="topPopupButton">
+          <Button className="customDialogButton" variant="outlined" onClick={handleClickOpen}>
+            Komunikado
+          </Button>
+        </div>
         <div class="cards">
           <Link to='/clientForm' style={{ all: "unset" }}>
             <div class="card card-1">
