@@ -167,6 +167,9 @@ export default function Home() {
               </Grid>
               <Grid item xs={6} md={6}>
                 Luna Park
+              </Grid
+              <Grid item xs={6} md={6}>
+                Mangusa Supermarket
               </Grid>
             </Grid>
           </Typography>
