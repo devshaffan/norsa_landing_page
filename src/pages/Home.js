@@ -1,14 +1,14 @@
 import * as React from "react";
 import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import ClientForm from "./ClientForm";
-import ClientNoboForm from "./ClientNoboForm";
+// import Tabs from "@mui/material/Tabs";
+// import Tab from "@mui/material/Tab";
+// import ClientForm from "./ClientForm";
+// import ClientNoboForm from "./ClientNoboForm";
 import "../components/Register.css";
-import { Card } from "@mui/material";
+// import { Card } from "@mui/material";
 import { Link } from "react-router-dom";
-import ButtonGroup from '@mui/material/ButtonGroup';
+// import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
@@ -167,7 +167,7 @@ export default function Home() {
               </Grid>
               <Grid item xs={6} md={6}>
                 Luna Park
-              </Grid
+              </Grid>
               <Grid item xs={6} md={6}>
                 Mangusa Supermarket
               </Grid>
@@ -180,6 +180,9 @@ export default function Home() {
           <Typography gutterBottom>
             <Grid container spacing={1}>
               <Grid item xs={6} md={6}>
+                Aura Fashion
+              </Grid>
+              <Grid item xs={6} md={6}>
                 Balanis
               </Grid>
               <Grid item xs={6} md={6}>
@@ -189,10 +192,22 @@ export default function Home() {
                 Building Depot
               </Grid>
               <Grid item xs={6} md={6}>
+                Buy Wise
+              </Grid>
+              <Grid item xs={6} md={6}>
                 Complete Home & Electronics
               </Grid>
               <Grid item xs={6} md={6}>
                 Coqueta’s
+              </Grid>
+              <Grid item xs={6} md={6}>
+                Fashion City
+              </Grid>
+              <Grid item xs={6} md={6}>
+                Hello
+              </Grid>
+              <Grid item xs={6} md={6}>
+                Hi-Fi Fashions
               </Grid>
               <Grid item xs={6} md={6}>
                 Kriss Kross
@@ -202,6 +217,12 @@ export default function Home() {
               </Grid>
               <Grid item xs={6} md={6}>
                 Lovely Fashion
+              </Grid>
+              <Grid item xs={6} md={6}>
+                Machoo
+              </Grid>
+              <Grid item xs={6} md={6}>
+                Mister & Miss Exclusive
               </Grid>
               <Grid item xs={6} md={6}>
                 Muebleria di Credito
@@ -217,6 +238,9 @@ export default function Home() {
               </Grid>
               <Grid item xs={6} md={6}>
                 Senjor Barata
+              </Grid>
+              <Grid item xs={6} md={6}>
+                Shivam
               </Grid>
             </Grid>
           </Typography>
