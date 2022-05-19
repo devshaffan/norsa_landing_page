@@ -91,7 +91,7 @@ export default function Home() {
     setOpen(false);
   };
 
-  const [openImage, setOpenImage] = React.useState(true);
+  const [openImage, setOpenImage] = React.useState(false);
 
   const handleClickOpenImage = () => {
     setOpenImage(true);
