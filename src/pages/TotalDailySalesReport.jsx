@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, Card, Form, Container, Row, Col } from "react-bootstrap";
 import { CSVLink, CSVDownload } from "react-csv";
-import getTotalSalesOfCurrentUser from '../services/reports';
+import getMerchantTransaction from '../services/reports';
 
 
 
@@ -21,7 +21,7 @@ export default function TotalDailySalesReport() {
             alert("date is empty")
         }
         else {
-            getTotalSalesOfCurrentUser(date)
+            getMerchantTransaction(date)
                 .then(res => {
                     setTotalSales(res.data)
                     console.log(res.data)
@@ -41,7 +41,7 @@ export default function TotalDailySalesReport() {
                             <Card className="form-wrapper mt-4">
                                 <Card.Header style={{ backgroundColor: "#F7F7F8" }}>
                                     <Card.Title as="h4" className="text-center m-3 heading">
-                                        Total Sales of Users
+                                        Merchant Tranaction
                                     </Card.Title>
                                 </Card.Header>
                                 <Card.Body>

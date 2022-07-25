@@ -46,7 +46,7 @@ export default function Reports() {
                 >
                     {
                         <Tab
-                            label="Total Daily Sale Of Current User"
+                            label="Merchant Transaction"
                             {...a11yProps(0)}
                             className="tab-styling"
                         />
