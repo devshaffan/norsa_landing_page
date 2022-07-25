@@ -9,6 +9,9 @@ import Home from './pages/Home';
 import "./App.css";
 import ClientForm from './pages/ClientForm';
 import ClientNoboForm from './pages/ClientNoboForm';
+import LoginForm from './pages/Login.js';
+import Reports from './pages/Reports.jsx';
+import checkUser from './services/auth';
 
 const App = () => {
   const theme = createTheme();
@@ -26,7 +29,8 @@ const App = () => {
             <Route path="/Home" element={<Home />} />
             <Route path='/clientForm' element={<ClientForm />} />
             <Route path='/clientNoboForm' element={<ClientNoboForm />} />
-
+            <Route path='/login' element={<LoginForm />} />
+            <Route path="/report" element={<Reports />} />
             {/* <Route path="/" element={<Forms />} /> */}
             {/* <Route exact path="/ClientNoboForm" element={<ClientNoboForm />} /> */}
           </Routes>
