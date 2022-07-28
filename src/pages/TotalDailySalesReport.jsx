@@ -41,7 +41,7 @@ export default function TotalDailySalesReport() {
                             <Card className="form-wrapper mt-4">
                                 <Card.Header style={{ backgroundColor: "#F7F7F8" }}>
                                     <Card.Title as="h4" className="text-center m-3 heading">
-                                        Merchant Tranaction
+                                        Daily Transaction Report
                                     </Card.Title>
                                 </Card.Header>
                                 <Card.Body>

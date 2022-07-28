@@ -38,7 +38,7 @@ const Navigation = () => {
             </>
             :
             <Button style={{ fontSize: "15px", color: "white", background: "green" }} onClick={() => navigate('/login')}>
-              Login
+              Merchant Login
             </Button>
           }
 
