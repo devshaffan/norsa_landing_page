@@ -7,7 +7,9 @@ import getMerchantTransaction from '../services/reports';
 
 export default function TotalDailySalesReport() {
     const [totalSales, setTotalSales] = React.useState(null)
-    const [date, setDate] = React.useState(null)
+    const [dateFrom, setDateFrom] = React.useState(null)
+    const [dateTo, setDateTo] = React.useState(null)
+
     const [filtered, setFiltered] = React.useState(false)
 
     useEffect(() => {
@@ -17,11 +19,11 @@ export default function TotalDailySalesReport() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!date) {
+        if (!dateFrom || !dateTo) {
             alert("date is empty")
         }
         else {
-            getMerchantTransaction(date)
+            getMerchantTransaction(dateFrom, dateTo)
                 .then(res => {
                     setTotalSales(res.data)
                     console.log(res.data)
@@ -47,16 +49,31 @@ export default function TotalDailySalesReport() {
                                 <Card.Body>
                                     <Form onSubmit={handleSubmit}>
                                         <Row>
-                                            <Col md="12">
+                                            <Col md="6">
                                                 <Form.Group>
-                                                    <label className="requiredelement">Date</label>
+                                                    <label className="requiredelement">Date From</label>
                                                     <Form.Control
                                                         required
-                                                        placeholder="abcd"
+                                                        placeholder="##"
                                                         type="date"
                                                         name="Title"
                                                         onChange={(e) => {
-                                                            setDate(e.target.value)
+                                                            setDateFrom(e.target.value)
+                                                        }}
+                                                    ></Form.Control>
+                                                    <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md="6">
+                                                <Form.Group>
+                                                    <label className="requiredelement">Date To</label>
+                                                    <Form.Control
+                                                        required
+                                                        placeholder="##"
+                                                        type="date"
+                                                        name="Title"
+                                                        onChange={(e) => {
+                                                            setDateTo(e.target.value)
                                                         }}
                                                     ></Form.Control>
                                                     <Form.Control.Feedback type="invalid">Please provide a value.</Form.Control.Feedback>

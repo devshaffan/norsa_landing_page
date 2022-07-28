@@ -4,10 +4,10 @@ import axios from "axios";
 
 
 
-export default function getMerchantTransaction(date) {
+export default function getMerchantTransaction(dateFrom, dateTo) {
     const token = getToken();
     if (!token) return "token not found";
-    return axios.get(address + "/api/reports/merchantTransactionLanding/" + date, {
+    return axios.get(address + "/api/reports/merchantTransactionLanding/" + dateFrom + "&" + dateTo, {
         headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
